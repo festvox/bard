@@ -1,0 +1,82 @@
+#!/bin/sh
+###########################################################################
+##                                                                       ##
+##                  Language Technologies Institute                      ##
+##                     Carnegie Mellon University                        ##
+##                         Copyright (c) 2012                            ##
+##                        All Rights Reserved.                           ##
+##                                                                       ##
+##  Permission is hereby granted, free of charge, to use and distribute  ##
+##  this software and its documentation without restriction, including   ##
+##  without limitation the rights to use, copy, modify, merge, publish,  ##
+##  distribute, sublicense, and/or sell copies of this work, and to      ##
+##  permit persons to whom this work is furnished to do so, subject to   ##
+##  the following conditions:                                            ##
+##   1. The code must retain the above copyright notice, this list of    ##
+##      conditions and the following disclaimer.                         ##
+##   2. Any modifications must be clearly marked as such.                ##
+##   3. Original authors' names are not deleted.                         ##
+##   4. The authors' names are not used to endorse or promote products   ##
+##      derived from this software without specific prior written        ##
+##      permission.                                                      ##
+##                                                                       ##
+##  CARNEGIE MELLON UNIVERSITY AND THE CONTRIBUTORS TO THIS WORK         ##
+##  DISCLAIM ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING      ##
+##  ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT   ##
+##  SHALL CARNEGIE MELLON UNIVERSITY NOR THE CONTRIBUTORS BE LIABLE      ##
+##  FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES    ##
+##  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN   ##
+##  AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION,          ##
+##  ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF       ##
+##  THIS SOFTWARE.                                                       ##
+##                                                                       ##
+###########################################################################
+##                                                                       ##
+##  Make ipk package for libzip                                          ##
+##                                                                       ##
+##  There is probably a more standard way to do this                     ##
+##                                                                       ##
+###########################################################################
+
+rm -rf zip
+mkdir zip
+cd zip
+mkdir -p usr/lib
+cp -pr /usr/lib/libzip.* usr/lib/
+mkdir -p usr/include
+cp -pr /usr/include/zip.h usr/include
+cp -pr /usr/include/zipconf.h usr/include
+tar zcf data.tar.gz ./usr
+
+cat <<EOF |
+Package: libzip
+Version: 2.1
+Depends: 
+Provides: libzip
+Source: http://www.nih.at/libzip/
+Section: multimedia
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: Alan W Black <awb@cs.cmu.edu>
+Architecture: xburst
+Installed-Size: 1.08m
+Description:  Library for reading zip files in place
+EOF
+cat >control
+
+tar zcf control.tar.gz control
+
+echo 2.0 >debian-binary
+
+tar zcf ../libzip_2.1-1_xburst.ipk ./debian-binary ./control.tar.gz ./data.tar.gz
+
+cd ..
+rm -rf zip
+
+ls -l libzip_2.1-1_xburst.ipk
+
+exit
+
+
+

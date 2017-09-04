@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PXML xmlns="http://openpandora.org/namespaces/PXML" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="PXML_schema.xsd">
+<!-- please see http://pandorawiki.org/PXML_specification for more information before editing, and remember the order does matter -->
+
+   <package id="Bard">
+           <author name="awbcmu" website="http://festvox.org/bard"/>
+           <version major="0" minor="10" release="0" build="2"/>
+           <titles>
+                   <title lang="en_US">Bard</title>
+           </titles>
+           <descriptions>
+                   <description lang="en_US">Bard</description>
+           </descriptions>
+   </package>
+
+  <application id="Bard-bard-2556" appdata="Bard">
+    <exec command="scripts/bard.sh"/>
+    <title lang="en_US">Bard</title>
+
+    <author name="awbcmu" website="http://festvox.org/bard"/>
+    <version major="0" minor="10" release="0" build="2"/>
+    <osversion major="1" minor="0" release="0" build="0"/>
+
+    <descriptions>
+    <description lang="en_US">Bard Storyteller, book reader that can read books to you.  Bard supports txt, epub and (x)html files.  It works as a text display only reader, or optionally uses CMU Flite to synthesis text with a choice of voices.</description>
+    </descriptions>
+
+    <icon src="Bard.png"/>
+
+    <licenses>
+      Bard and CMU Flite are free software and released under a modified BSD license, see COPYING file details.
+      Bard includes a compiled version of libzip (http://www.nih.at/libzip/) used to read epub files.
+    </licenses>
+
+    <info name="bard documentation" type="text/plain" src="readme.txt"/>
+
+    <categories>
+      <category name="Office">
+	<subcategory name="Viewer"/>
+      </category>
+    </categories>
+
+    <!--<clockspeed frequency="600"/>-->
+  </application>
+
+</PXML>

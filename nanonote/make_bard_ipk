@@ -1,0 +1,89 @@
+#!/bin/sh
+###########################################################################
+##                                                                       ##
+##                  Language Technologies Institute                      ##
+##                     Carnegie Mellon University                        ##
+##                         Copyright (c) 2012                            ##
+##                        All Rights Reserved.                           ##
+##                                                                       ##
+##  Permission is hereby granted, free of charge, to use and distribute  ##
+##  this software and its documentation without restriction, including   ##
+##  without limitation the rights to use, copy, modify, merge, publish,  ##
+##  distribute, sublicense, and/or sell copies of this work, and to      ##
+##  permit persons to whom this work is furnished to do so, subject to   ##
+##  the following conditions:                                            ##
+##   1. The code must retain the above copyright notice, this list of    ##
+##      conditions and the following disclaimer.                         ##
+##   2. Any modifications must be clearly marked as such.                ##
+##   3. Original authors' names are not deleted.                         ##
+##   4. The authors' names are not used to endorse or promote products   ##
+##      derived from this software without specific prior written        ##
+##      permission.                                                      ##
+##                                                                       ##
+##  CARNEGIE MELLON UNIVERSITY AND THE CONTRIBUTORS TO THIS WORK         ##
+##  DISCLAIM ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING      ##
+##  ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT   ##
+##  SHALL CARNEGIE MELLON UNIVERSITY NOR THE CONTRIBUTORS BE LIABLE      ##
+##  FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES    ##
+##  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN   ##
+##  AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION,          ##
+##  ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF       ##
+##  THIS SOFTWARE.                                                       ##
+##                                                                       ##
+###########################################################################
+##                                                                       ##
+##  Make ipk package for Ben Nanonote                                    ##
+##                                                                       ##
+##  There is probably a more standard way to do this                     ##
+##                                                                       ##
+###########################################################################
+
+PROJECT_PREFIX=`grep PROJECT_PREFIX ../config/project.mak | awk '{print $3}'`
+PROJECT_VERSION=`grep PROJECT_VERSION ../config/project.mak | awk '{print $3}'`
+
+rm -rf ipk
+mkdir ipk
+cd ipk
+mkdir -p usr/local/bin
+cp -pr ../../bin/bard usr/local/bin
+mkdir -p usr/share/gmenu2x/sections/applications/
+cp -pr ../bard.gmenu2x usr/share/gmenu2x/sections/applications/
+mkdir -p usr/share/gmenu2x/skins/Default/icons
+cp -pr ../../Bard32.png usr/share/gmenu2x/skins/Default/icons
+tar zcf data.tar.gz ./usr
+
+FSIZE=`ls -l usr/local/bin/bard | awk '{print $5}'`
+
+cat <<EOF |
+Package: bard
+Version: PROJECT_VERSION
+Depends: libsdl, libsdl-ttf, libzip
+Provides: 
+Source: http://festvox.org/bard/
+Section: multimedia
+Status: unknown ok not-installed
+Essential: no
+Priority: optional
+Maintainer: Alan W Black <awb@cs.cmu.edu>
+Architecture: xburst
+Installed-Size: MYSIZE
+Description:  Bard Storyteller is an ebook reader you can read texts with or have it read to you with text-to-speech.
+EOF
+sed 's/PROJECT_VERSION/'$PROJECT_VERSION'/' |
+sed 's/MYSIZE/'$FSIZE'/' >control
+
+tar zcf control.tar.gz control
+
+echo 2.0 >debian-binary
+
+tar zcf ../${PROJECT_PREFIX}_${PROJECT_VERSION}-1_xburst.ipk ./debian-binary ./control.tar.gz ./data.tar.gz
+
+cd ..
+rm -rf ipk
+
+ls -l ${PROJECT_PREFIX}_${PROJECT_VERSION}-1_xburst.ipk
+
+exit
+
+
+

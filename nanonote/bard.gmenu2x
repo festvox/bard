@@ -1,0 +1,4 @@
+title=bard
+icon=skin:icons/Bard32.png
+exec=/usr/local/bin/bard
+params=
