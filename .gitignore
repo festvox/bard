@@ -1,0 +1,10 @@
+bin/bard
+build/
+config.log
+config.status
+config/config
+config/system.mak
+include/bard_version.h
+main/bard_main.o
+.time-stamp
+FileList

@@ -64,7 +64,7 @@ CONFIG=configure configure.in config.sub config.guess \
        missing install-sh mkinstalldirs
 OTHER = Bard32.png
 
-FILES = Makefile $(CONFIG) COPYING README $(OTHER)
+FILES = Makefile $(CONFIG) COPYING README.md $(OTHER)
 DIST_CLEAN = .time-stamp $(TOP)/build/ \
                 config.cache config.log config.status \
 		config/config config/system.mak FileList
