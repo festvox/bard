@@ -36,8 +36,8 @@
 ###########################################################################
 PROJECT_NAME = Bard Storyteller
 PROJECT_PREFIX = bard
-PROJECT_VERSION = 0.11.2
-PROJECT_DATE = Aug 2014
+PROJECT_VERSION = 0.12.0
+PROJECT_DATE = Sep 2017
 PROJECT_STATE = current
 
 PROJECT_SHLIB_VERSION = 1

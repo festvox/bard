@@ -1,7 +1,8 @@
 # bard
 
-Bard Storyteller 0.11 August 2014
+Bard Storyteller 0.12 Sep 2017
 http://festvox.org/bard/
+https://github.com/festvox/bard
 
 Bard Storyteller is a text reader.  Bard not only allows a user to
 read books, but can also read books to the user using text-to-speech.
