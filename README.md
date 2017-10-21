@@ -58,7 +58,7 @@ kerning when libharfbuzz is compiled in).
 
 DEPENDENCIES
 
-    flite-2.0.0
+    flite-2.1
     libSDL 1.2
     libSDL_ttf 2.0
 
