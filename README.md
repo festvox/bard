@@ -295,6 +295,7 @@ The Bard port to OpenPandora was encouraged by the Alive and Kicking
 Coding Competition 2013/2014.
 
 FUTURE GOALS
+------------
 
 We want this to be a platform for new (fast) high quality synthesis
 voices in Flite and are working on getting them fast enough to be
