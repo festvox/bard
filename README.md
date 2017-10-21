@@ -1,8 +1,6 @@
-# bard
-
-Bard Storyteller 0.12 Sep 2017
-http://festvox.org/bard/
-https://github.com/festvox/bard
+                      Bard Storyteller 0.12 Sep 2017
+                         http://festvox.org/bard/
+                      https://github.com/festvox/bard
 
 Bard Storyteller is a text reader.  Bard not only allows a user to
 read books, but can also read books to the user using text-to-speech.
@@ -36,8 +34,10 @@ reader myself from scratch, so I did.
 I'd like this to be TTS engine neutral but its not.
 
 At present the kal_diphone voice is built in, but any dumped Flite cg 
-voice may be specified on command line with 
-     -voice file:///home/.../VOICE.flitevox
+voice may be specified on command line with
+
+    -voice file:///home/.../VOICE.flitevox
+     
 If initially started with -voices_dir PATH, voices may be loaded
 within Bard and remembered for particular files that are being read.  At
 present 16KHz (order 25) cg voices are too slow for the Ben Nanonote
@@ -51,52 +51,60 @@ From 0.11, Bard supports multiple fonts including Chinese (Traditional and
 Simplified), Korean, Japanese, Devanagari, Tamil and Telugu (with proper
 kerning when libharfbuzz is compiled in).
 
-Alan W Black                                email: awb@cs.cmu.edu
-Language Technologies Institute             http://www.cs.cmu.edu/~awb/
-Carnegie Mellon University                  tel: +1-412-268-6299  
-5000 Forbes Ave, Pittsburgh PA, 15213, USA. fax: +1-412-268-6298
+    Alan W Black                                email: awb@cs.cmu.edu
+    Language Technologies Institute             http://www.cs.cmu.edu/~awb/
+    Carnegie Mellon University                  tel: +1-412-268-6299  
+    5000 Forbes Ave, Pittsburgh PA, 15213, USA. fax: +1-412-268-6298
 
 DEPENDENCIES
 
-flite-2.0.0
-   http://festvox.org/bard/   
-libSDL 1.2
-libSDL_ttf 2.0
-   Both are available from  http://www.libsdl.org
+    flite-2.0.0
+    libSDL 1.2
+    libSDL_ttf 2.0
+
+Both are available from  http://www.libsdl.org
+
 For epub (which is optional)
-   you need 
-       libzip http://www.nih.at/libzip/
-   Note we need both zip.h and zipconf.h installed before configure will
-   enable epub support. 
+
+    libzip http://www.nih.at/libzip/
+
+Note we need both zip.h and zipconf.h installed before configure will
+enable epub support.
+   
 For epub images you also need
-libSDL_image
-libSDL_gfx
+
+    libSDL_image
+    libSDL_gfx
 
 COMPILATION
 
-tar jxvf flite-2.0.0-release.tar.bz2
-cd flite-1.9-release
-./configure && make && make voices
-export FLITEDIR=`pwd`
-cd ..
+    git clone https//github.com/festvox/flite
+    cd flite
+    ./configure && make && make voices
+    export FLITEDIR=`pwd`
+    cd ..
 
-tar jxvf bard-0.11.3-current.tar.bz2
-cd bard-0.11.3-current
-./configure
-make
-./bin/bard -voices_dir $FLITEDIR/voices
+    git clone https//github.com/festvox/bard
+    cd bard
+    ./configure
+    make
+   ./bin/bard -voices_dir $FLITEDIR/voices
 
 Bard requires access to a .ttf font, at configuration time it tries to find 
 this in /usr/share/fonts, but it might not succeed in finding the right one.
 You can edit config/config and add a (full) pathname to a .ttf font.
 For development I used LiberationSerif-Regular.ttf (you probably want a serif
 font).  You can get the Liberation fonts from
-   https://www.redhat.com/promo/fonts/
+
+    https://www.redhat.com/promo/fonts/
+   
 Or DejaVu fonts from
-   http://dejavu-fonts.org
+
+    http://dejavu-fonts.org
+    
 If it can't automatically find one, you can specify a full path name to one
 
-./bin/bard -font /usr/share/fonts/liberation/LiberationSerif-Regular.ttf
+    ./bin/bard -font /usr/share/fonts/liberation/LiberationSerif-Regular.ttf
 
 And it will remember that for future calls (it saves the font pathname in 
 $HOME/.bard_config on exit)
@@ -119,19 +127,19 @@ make that robust over version upgrades, and have succeeded so far.
 
 BASIC COMMANDS ARE
 
-tab    Toggle speech mode
-space  Toggle scrolling
-f      display file selection window
-       arrow keys, home, page down, and enter for selection
-g      display general parameters (macro navigation, volume, speed)
-h      display help
-r      recent files
-m      menu (of other pages)
-v      voice select
-c      font select
-i      Increase font/volume up/increase scroll speed
-o      Decrease font/volume down/decrease scroll speed
-vol up/down (F11/F12) control scroll speed, volume or page up/down
+    tab    Toggle speech mode
+    space  Toggle scrolling
+    f      display file selection window
+           arrow keys, home, page down, and enter for selection
+    g      display general parameters (macro navigation, volume, speed)
+    h      display help
+    r      recent files
+    m      menu (of other pages)
+    v      voice select
+    c      font select
+    i      Increase font/volume up/increase scroll speed
+    o      Decrease font/volume down/decrease scroll speed
+    vol up/down (F11/F12) control scroll speed, volume or page up/down
 
 You can navigate a page with pagedown, home and cursor keys within a
 page.  Page up is harder than I thought, it does something useful, but
@@ -156,6 +164,7 @@ This version doesn't support a mouse (or touch screen) but later versions
 will (as well as whatever buttons you have on your mobile device).
 
 FONTS
+-----
 
 Fonts are harder than you think.  As of 0.11 Bard supports selecting
 fonts with files, if started with the -font_dir DIR argument.  With
@@ -171,6 +180,7 @@ font selections and an internal list, but you can always override the
 selection in the font menu.  
 
 VOICES
+------
 
 In addition to fonts, Bard also supports synthesis for other
 languages, if started with the -voices_dir DIR argument.  At present
@@ -181,6 +191,7 @@ Tamil voices will speak romanized words/characters as English which
 seems to be a reasonable option.
 
 COLORS
+------
 
 You can customize your own colors by specify them in the form of 0xFFFFFF
 in the ~/.bard_config file.  It is best to run bard and quit it to get a 
@@ -189,15 +200,17 @@ There are only a very few builtin (black. white, red, blue and green), but
 you can specify and red green blue hex values.  e.g. if you want the main
 text window background color to be antiquewhite change the line
 
--text_background_color "white"
+    -text_background_color "white"
 
 to
 
--text_background_color "0xcdc0b0"
+    -text_background_color "0xcdc0b0"
 
 HISTORY
+-------
 
 0.11 August 2014
+
      harfbuzz/cairo font layout (optional)
      Non-latin language support (Hindi, Chinese, Japanese ...) 
      added font selection sub-menu
@@ -208,49 +221,72 @@ HISTORY
        you need to then use the font sub menu to select a Chinese font to
        go with it.  It will remember that font for that book in future loads
        but you've got to do that initial selection yourself.
+       
 0.10 July 2014
+
      gcw-zero support (which only has game console buttons)
      much better (x)html support so it can properly interpret multiple tags
+     
 0.9  Dec 2013
+
      menu window (for machines that don't have keyboards)
      voice select, voice name saved with recent files
      "game" controller support (but really for OpenPandora key bindings)
      Open Pandora .pnd support
+     
 x.x  Nov 17 2013  LM
+
      changes to build on Windows with mingw and msys, handle relative image 
      locations with ../ in path, handle &lt; &gt; and better support for &amp;
      add support for plus on US keyboards (SDLK_Equals plus shift).
+     
 0.8  ??? (never released)
+
      (x)html fixes/support
+     
 0.7  Mar 8th 2012
+
      cursor hiding, epub (generic tokenstreams), some xhtml highlighting
      paragraph processing improved, bug fixes, epub images,
      fixed smooth scrolling, better audio streaming.
+     
 0.6  Jan 29th 2012
+
      page up (ish), keyboard rationalization
      discover screen size (works on n900), screen blank
      bug fixes, externally specified colors, smooth scroll
+     
 0.5  Jan 22nd 2012 (first release to nanonote list)
+
      info page: volume, position, speed, battery and time working
      make ipk, logo
+     
 0.4  Jan 21st 2012
+
      imported into CVS, paging forward and back (with arrow keys and speech), 
      recent files page, general info page (%pos, volume, speed -- well almost)
      .bard_config, make install, use installed fonts rather than include one
+     
 0.3  Jan 14th 2012
+
      SDL audio stable and now default.  Help window.  Tokens on screen can 
      be traversed with arrow keys, and highlighted.  File selection
      works (with dirent and highlighting).  Improved configuration, added
      COPYING and README, included free ttf font.  Technically functional
+     
 0.2  Jan 7th 2012
+
      display text (good ttf), speaks, auto pages forward
      support SDL and flite_direct audio.  
      Runs on ben, yentna, leith and awbt60
+     
 0.1  Jan 4th 2012
+
      displays loaded text, pages forward, can change font size
      runs on desktop and Ben Nanonote
 
 AKNOWLEDGEMENTS
+---------------
 
 Thanks to LM for giving a whole set of fixes, and getting me to add some
 new features
@@ -265,13 +301,14 @@ voices in Flite and are working on getting them fast enough to be
 practical on 336MHz processors.  We also want to support more ebook
 formats.  Specific features already on the list are:
 
-Other ebook formats: prc, rtf, pdf
-More complete support for epub, (x)html
-Search/indexing
-Chapter Navigation (when chapters can be found in epub files)
-Support for more platforms (e.g. Android)
-(Cleaner) Support for cross compilation
-SDL 2 support
+    Other ebook formats: prc, rtf, pdf
+    More complete support for epub, (x)html
+    Search/indexing
+    Chapter Navigation (when chapters can be found in epub files)
+    Support for more platforms (e.g. Android)
+    (Cleaner) Support for cross compilation
+    SDL 2 support
+    Automatic font selection within books
 
 But please recommend other features you'd like to see.
 
