@@ -420,10 +420,10 @@ void bard_window_page_up(bard_window *cw)
     end_target = home->file_pos;
     jump_back = last->file_pos - end_target;
     jump_back += 50;  /* a bit more */
-    printf("awb_debug page cw %s %d up %s %d %s %d\n",
+    /*    printf("awb_debug page cw %s %d up %s %d %s %d\n",
            cw->current_token->word, cw->current_token->file_pos,
            home->word,home->file_pos,
-           last->word,last->file_pos);
+           last->word,last->file_pos); */
     t1 = end_target-jump_back;
     if (t1 < 0) 
     {

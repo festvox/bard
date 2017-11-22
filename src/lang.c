@@ -170,9 +170,9 @@ static void bard_debug_dump_string(const char *token)
     /* chars to ord */
     for (v=utflets; v; v=val_cdr(v)) {
         tmpv = cst_utf8_ord(val_car(v));
-        printf("awb_debug %s 0x%x\n",
+        /* printf("awb_debug %s 0x%x\n",
                val_string(val_car(v)),
-               val_int(tmpv));
+               val_int(tmpv)); */
         ords = cons_val(tmpv, ords);
     }
     ords = val_reverse(ords);
@@ -216,7 +216,7 @@ int bard_lang_breakable_language(const char *token)
                 if (k < 5) char_utf8[k] = token[i+k];
             }
             if (k < 6) char_utf8[k] = '\0';
-            printf("awb_debug %d 0x%x >%s<\n",char_len,char_ord,char_utf8);
+            /* printf("awb_debug %d 0x%x >%s<\n",char_len,char_ord,char_utf8); */
         }
         i+=(char_len-1);
     }

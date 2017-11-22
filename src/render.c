@@ -187,7 +187,7 @@ int bard_font_set(bard_font **tbf,
         if (FT_Init_FreeType(&bf->ft_library) != 0)
         {
             bard_font_delete(bf);
-            printf("awb_debug failed Init FreeType\n");
+            /* printf("awb_debug failed Init FreeType\n"); */
             return 0; 
         }
         /* Get the style (regaulr/bold) dependent name */
@@ -197,7 +197,7 @@ int bard_font_set(bard_font **tbf,
         if (FT_New_Face(bf->ft_library,actual_font_name,0,&bf->ft_face) != 0)
         {
             bard_font_delete(bf);
-            printf("awb_debug font_face failed\n");
+            /* printf("awb_debug font_face failed\n"); */
             return 0;
         }
 
