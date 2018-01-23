@@ -155,7 +155,7 @@ void bard_window_select_voice(bard_reader *br)
         if (cst_streq(ptt,"kal.flitevox"))
         {  /* In order to support kal_diphone we use a fake file name */
             cst_free(fullpathname);
-            fullpathname = cst_strdup("kal.flitevox");
+            fullpathname = cst_strdup("kal");
         }
 
         /* Load voice (old one doesn't need delete, its in the flite list*/
