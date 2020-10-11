@@ -78,13 +78,13 @@ For epub images you also need
 
 COMPILATION
 
-    git clone https//github.com/festvox/flite
+    git clone https://github.com/festvox/flite
     cd flite
     ./configure && make && make voices
     export FLITEDIR=`pwd`
     cd ..
 
-    git clone https//github.com/festvox/bard
+    git clone https://github.com/festvox/bard
     cd bard
     ./configure
     make
