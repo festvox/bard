@@ -78,13 +78,13 @@ For epub images you also need
 
 COMPILATION
 
-    git clone https//github.com/festvox/flite
+    git clone https://github.com/festvox/flite
     cd flite
     ./configure && make && make voices
     export FLITEDIR=`pwd`
     cd ..
 
-    git clone https//github.com/festvox/bard
+    git clone https://github.com/festvox/bard
     cd bard
     ./configure
     make
@@ -115,7 +115,7 @@ Simplified), Korean, Japanese, Hindi (Devanagari), Tamil and Telugu
 (the last three with proper kerning if used with libharfbuzz).  If
 started with -font_dir PATH a font menu window will be available to
 allow you select an appropriate font.  Google's Noto Fonts have an
-appropriate lincense and have good coverage for most languages
+appropriate license and have good coverage for most languages
 https://www.google.com/get/noto/.  Speech Synthesis in these languages
 is also support when we have a voice in that language.
 
